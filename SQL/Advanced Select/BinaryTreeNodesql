@@ -1,0 +1,7 @@
+SELECT N,
+    CASE WHEN P IS NULL THEN 'Root'
+    WHEN (SELECT COUNT(1) FROM BST Inner_B WHERE Inner_B.P = B.N) > 0 THEN 'Inner'
+    ELSE 'Leaf'
+    END NODE_TYPE
+FROM BST B
+ORDER BY N;
